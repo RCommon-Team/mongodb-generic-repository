@@ -28,4 +28,8 @@
     <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+
 </Project>

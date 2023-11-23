@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDbGenericRepository.Models;
 using MongoDbGenericRepository.Utils;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository
 {
@@ -85,7 +86,7 @@ namespace MongoDbGenericRepository
                 || (defaultTKey != null
                     && defaultTKey.Equals(document.Id)))
             {
-                document.Id = IdGenerator.GetId<TKey>();
+                //document.Id = IdGenerator.GetId<TKey>();
             }
         }
 
@@ -95,7 +96,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TDocument">The document type.</typeparam>
         /// <param name="document">The document.</param>
         protected void FormatDocument<TDocument>(TDocument document)
-            where TDocument : IBusinessEntity
+            where TDocument : IBusinessEntity<Guid>
         {
             if (document == null)
             {
@@ -104,7 +105,7 @@ namespace MongoDbGenericRepository
 
             if (document.Id == default)
             {
-                document.Id = Guid.NewGuid();
+                //document.Id = Guid.NewGuid();
             }
         }
 
@@ -115,7 +116,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         protected virtual IMongoCollection<TDocument> HandlePartitioned<TDocument>(string partitionKey)
-            where TDocument : IBusinessEntity<Guid>
+            where TDocument : IBusinessEntity
         {
             if (!string.IsNullOrEmpty(partitionKey))
             {
@@ -132,7 +133,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         protected virtual IMongoCollection<TDocument> GetCollection<TDocument>(string partitionKey = null)
-            where TDocument : IBusinessEntity<Guid>
+            where TDocument : IBusinessEntity
         {
             return MongoDbContext.GetCollection<TDocument>(partitionKey);
         }

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MongoDbGenericRepository.DataAccess.Base;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository.DataAccess.Index
 {

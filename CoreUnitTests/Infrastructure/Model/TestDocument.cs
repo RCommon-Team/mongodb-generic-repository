@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace CoreUnitTests.Infrastructure.Model;
 
-public class TestDocument : Document
+public class TestDocument : BusinessEntity
 {
     public TestDocument()
     {
@@ -12,6 +14,9 @@ public class TestDocument : Document
         Nested = new Nested {SomeDate = DateTime.UtcNow};
         Children = new List<Child>();
     }
+
+    [BsonId]
+    public Guid Id { get; set; }
 
     public int SomeValue { get; set; }
 
@@ -30,4 +35,6 @@ public class TestDocument : Document
     public Nested Nested { get; set; }
 
     public List<Child> Children { get; set; }
+
+    public override object[] GetKeys() => throw new NotImplementedException();
 }

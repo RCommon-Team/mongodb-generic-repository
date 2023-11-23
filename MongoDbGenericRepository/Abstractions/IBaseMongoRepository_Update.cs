@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 using System;
 using System.Linq.Expressions;
 using System.Threading;

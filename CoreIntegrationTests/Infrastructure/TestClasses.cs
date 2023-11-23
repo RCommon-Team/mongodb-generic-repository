@@ -73,7 +73,7 @@ namespace CoreIntegrationTests.Infrastructure
         where TKey : IEquatable<TKey>
     {
         [BsonId]
-        public Guid Id { get; set; }
+        public TKey Id { get; set; }
         public int Version { get; set; }
 
         public TestDoc()
@@ -103,7 +103,7 @@ namespace CoreIntegrationTests.Infrastructure
 
         private void InitializeFields()
         {
-            Id = Init<Guid>();
+            Id = Init<TKey>();
         }
 
     }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDbGenericRepository.DataAccess.Base;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository.DataAccess.Read
 {

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using RCommon.Extensions;
-using PropertyChanged;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RCommon.Entities
 {
@@ -28,20 +25,20 @@ namespace RCommon.Entities
         /// <inheritdoc/>
         public override string ToString()
         {
-            return $"[ENTITY: {GetType().Name}] Keys = {GetKeys().GetDelimitedString(',')}";
+            return "";// return $"[ENTITY: {GetType().Name}] Keys = {GetKeys().GetDelimitedString(',')}";
         }
 
         public abstract object[] GetKeys();
 
         public bool EntityEquals(IBusinessEntity other)
         {
-            return this.BinaryEquals(other);
+            return true;// return this.BinaryEquals(other);
         }
 
-        [NotMapped]
+        
         public IReadOnlyCollection<ILocalEvent> LocalEvents => _localEvents?.AsReadOnly();
 
-        [NotMapped]
+        
         public bool AllowEventTracking { get => _allowEventTracking; set => _allowEventTracking = value; }
 
         public void AddLocalEvent(ILocalEvent eventItem)

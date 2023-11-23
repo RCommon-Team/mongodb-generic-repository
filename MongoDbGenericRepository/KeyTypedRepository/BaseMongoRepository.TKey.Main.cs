@@ -1,6 +1,7 @@
 ﻿using System;
 using MongoDB.Driver;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository
 {

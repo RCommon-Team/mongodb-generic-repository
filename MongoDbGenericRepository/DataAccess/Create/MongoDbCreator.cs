@@ -125,7 +125,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
                 || (defaultTKey != null
                     && defaultTKey.Equals(document.Id)))
             {
-                document.Id = IdGenerator.GetId<TKey>();
+                //document.Id = IdGenerator.GetId<TKey>();
             }
         }
     }

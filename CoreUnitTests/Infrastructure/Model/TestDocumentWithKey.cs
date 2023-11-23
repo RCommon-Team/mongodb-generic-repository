@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace CoreUnitTests.Infrastructure.Model;
 
-public class TestDocumentWithKey<TKey> : IBusinessEntity<TKey>
+public class TestDocumentWithKey<TKey> : BusinessEntity<TKey>
     where TKey : IEquatable<TKey>
 {
     public TKey Id { get; set; }

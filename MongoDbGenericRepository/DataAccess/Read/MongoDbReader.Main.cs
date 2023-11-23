@@ -8,6 +8,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using MongoDbGenericRepository.DataAccess.Base;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository.DataAccess.Read
 {
