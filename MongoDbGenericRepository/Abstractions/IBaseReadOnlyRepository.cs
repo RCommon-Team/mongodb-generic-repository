@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository
 {
@@ -33,7 +34,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="id">The Id of the document you want to get.</param>
         Task<TDocument> GetByIdAsync<TDocument, TKey>(TKey id)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace MongoDbGenericRepository
         /// <param name="id">The Id of the document you want to get.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetByIdAsync<TDocument, TKey>(TKey id, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace MongoDbGenericRepository
         /// <param name="id">The Id of the document you want to get.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<TDocument> GetByIdAsync<TDocument, TKey>(TKey id, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetByIdAsync<TDocument, TKey>(TKey id, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="id">The Id of the document you want to get.</param>
         TDocument GetById<TDocument, TKey>(TKey id)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace MongoDbGenericRepository
         /// <param name="id">The Id of the document you want to get.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetById<TDocument, TKey>(TKey id, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace MongoDbGenericRepository
         /// <param name="id">The Id of the document you want to get.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         TDocument GetById<TDocument, TKey>(TKey id, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -111,7 +112,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetById<TDocument, TKey>(TKey id, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -121,7 +122,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey> where TKey : IEquatable<TKey>;
+            where TDocument : IBusinessEntity<TKey> where TKey : IEquatable<TKey>;
 
         /// <summary>
         ///     Asynchronously returns one document given filter definition.
@@ -131,7 +132,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="findOption">A mongodb filter option.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption)
-            where TDocument : IDocument<TKey> where TKey : IEquatable<TKey>;
+            where TDocument : IBusinessEntity<TKey> where TKey : IEquatable<TKey>;
 
         /// <summary>
         ///     Asynchronously returns one document given filter definition.
@@ -141,7 +142,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey> where TKey : IEquatable<TKey>;
+            where TDocument : IBusinessEntity<TKey> where TKey : IEquatable<TKey>;
 
         /// <summary>
         ///     Asynchronously returns one document given filter definition.
@@ -152,7 +153,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, string partitionKey)
-            where TDocument : IDocument<TKey> where TKey : IEquatable<TKey>;
+            where TDocument : IBusinessEntity<TKey> where TKey : IEquatable<TKey>;
 
         /// <summary>
         ///     Asynchronously returns one document given filter definition.
@@ -162,7 +163,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey> where TKey : IEquatable<TKey>;
+            where TDocument : IBusinessEntity<TKey> where TKey : IEquatable<TKey>;
 
         /// <summary>
         ///     Asynchronously returns one document given filter definition.
@@ -173,7 +174,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey> where TKey : IEquatable<TKey>;
+            where TDocument : IBusinessEntity<TKey> where TKey : IEquatable<TKey>;
 
         /// <summary>
         ///     Asynchronously returns one document given filter definition.
@@ -184,7 +185,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -201,7 +202,7 @@ namespace MongoDbGenericRepository
             FindOptions findOption,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -211,7 +212,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -222,7 +223,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="findOption">A mongodb filter option.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -233,7 +234,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -245,7 +246,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -256,7 +257,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
 
@@ -269,7 +270,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -281,7 +282,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetOne<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -298,7 +299,7 @@ namespace MongoDbGenericRepository
             FindOptions findOption,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -308,7 +309,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -319,7 +320,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -330,7 +331,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -342,7 +343,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetOneAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -352,7 +353,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         TDocument GetOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -363,7 +364,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -374,7 +375,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         TDocument GetOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -386,7 +387,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         TDocument GetOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -397,7 +398,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         IFindFluent<TDocument, TDocument> GetCursor<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -408,7 +409,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -418,7 +419,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -429,7 +430,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -440,7 +441,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="countOption">A mongodb counting option.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -452,7 +453,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -464,7 +465,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -476,7 +477,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<bool> AnyAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -493,7 +494,7 @@ namespace MongoDbGenericRepository
             CountOptions countOption,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -503,7 +504,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -514,7 +515,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -525,7 +526,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="countOption">A mongodb counting option.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -537,7 +538,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -548,7 +549,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -560,7 +561,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -572,7 +573,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -585,7 +586,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         bool Any<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -595,7 +596,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         Task<bool> AnyAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -606,7 +607,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<bool> AnyAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -617,7 +618,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<bool> AnyAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -629,7 +630,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<bool> AnyAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -639,7 +640,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         bool Any<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -650,7 +651,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         bool Any<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -661,7 +662,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         bool Any<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -673,7 +674,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         bool Any<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -683,7 +684,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -694,7 +695,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -705,7 +706,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="findOption">A mongodb filter option.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -717,7 +718,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -728,7 +729,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -740,7 +741,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -752,7 +753,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -769,7 +770,7 @@ namespace MongoDbGenericRepository
             FindOptions findOption,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -779,7 +780,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -790,7 +791,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -801,7 +802,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="findOption">A mongodb filter option.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -813,7 +814,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -824,7 +825,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -836,7 +837,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -848,7 +849,7 @@ namespace MongoDbGenericRepository
         /// <param name="findOption">A mongodb filter option.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         List<TDocument> GetAll<TDocument, TKey>(FilterDefinition<TDocument> condition, FindOptions findOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -865,7 +866,7 @@ namespace MongoDbGenericRepository
             FindOptions findOption,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -875,7 +876,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -886,7 +887,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -897,7 +898,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -909,7 +910,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<List<TDocument>> GetAllAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -919,7 +920,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         List<TDocument> GetAll<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -930,7 +931,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         List<TDocument> GetAll<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -941,7 +942,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         List<TDocument> GetAll<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -953,7 +954,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         List<TDocument> GetAll<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -963,7 +964,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -974,7 +975,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partitionKey</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -985,7 +986,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="countOption">A mongodb counting option.</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -997,7 +998,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="partitionKey">An optional partitionKey</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1008,7 +1009,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1020,7 +1021,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partitionKey</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1032,7 +1033,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<long> CountAsync<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1049,7 +1050,7 @@ namespace MongoDbGenericRepository
             CountOptions countOption,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1059,7 +1060,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="condition">A mongodb filter definition.</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1070,7 +1071,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="partitionKey">An optional partitionKey</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1081,7 +1082,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="countOption">A mongodb counting option.</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1093,7 +1094,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="partitionKey">An optional partitionKey</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1104,7 +1105,7 @@ namespace MongoDbGenericRepository
         /// <param name="condition">A mongodb filter definition.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1116,7 +1117,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partitionKey</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1128,7 +1129,7 @@ namespace MongoDbGenericRepository
         /// <param name="countOption">A mongodb counting option.</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1141,7 +1142,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partitionKey</param>
         /// <param name="cancellationToken">An optional cancellation token.</param>
         long Count<TDocument, TKey>(FilterDefinition<TDocument> condition, CountOptions countOption, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1151,7 +1152,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         Task<long> CountAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1162,7 +1163,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<long> CountAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1173,7 +1174,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partitionKey</param>
         Task<long> CountAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1185,7 +1186,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partitionKey</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<long> CountAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1195,7 +1196,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="filter">A LINQ expression filter.</param>
         long Count<TDocument, TKey>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1206,7 +1207,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="cancellationToken">An optional Cancellation Token.</param>
         long Count<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1217,7 +1218,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partitionKey</param>
         long Count<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1229,7 +1230,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partitionKey</param>
         /// <param name="cancellationToken">An optional Cancellation Token.</param>
         long Count<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         #endregion
@@ -1245,7 +1246,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="maxValueSelector">A property selector to order by descending.</param>
         Task<TDocument> GetByMaxAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, object>> maxValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1261,7 +1262,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> maxValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
 
@@ -1278,7 +1279,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> maxValueSelector,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1296,7 +1297,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> maxValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1308,7 +1309,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="orderByDescending">A property selector to order by descending.</param>
         TDocument GetByMax<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, object>> orderByDescending)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1324,7 +1325,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> orderByDescending,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1340,7 +1341,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> orderByDescending,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1358,7 +1359,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> orderByDescending,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1370,7 +1371,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="minValueSelector">A property selector for the minimum value you are looking for.</param>
         Task<TDocument> GetByMinAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, object>> minValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1386,7 +1387,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> minValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1402,7 +1403,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1420,7 +1421,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1432,7 +1433,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="minValueSelector">A property selector for the minimum value you are looking for.</param>
         TDocument GetByMin<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, object>> minValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1448,7 +1449,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, object>> minValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1461,7 +1462,7 @@ namespace MongoDbGenericRepository
         /// <param name="minValueSelector">A property selector for the minimum value you are looking for.</param>
         /// <param name="partitionKey">An optional partitionKey.</param>
         TDocument GetByMin<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, object>> minValueSelector, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1479,7 +1480,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1491,7 +1492,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="maxValueSelector">A property selector for the maximum value you are looking for.</param>
         Task<TValue> GetMaxValueAsync<TDocument, TKey, TValue>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TValue>> maxValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1507,7 +1508,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> maxValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1523,7 +1524,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1541,7 +1542,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1553,7 +1554,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="maxValueSelector">A property selector to order by ascending.</param>
         TValue GetMaxValue<TDocument, TKey, TValue>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TValue>> maxValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1569,7 +1570,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> maxValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1585,7 +1586,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1603,7 +1604,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1615,7 +1616,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="minValueSelector">A property selector to order by ascending.</param>
         Task<TValue> GetMinValueAsync<TDocument, TKey, TValue>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TValue>> minValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1631,7 +1632,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> minValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1647,7 +1648,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1665,7 +1666,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1677,7 +1678,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="minValueSelector">A property selector to order by ascending.</param>
         TValue GetMinValue<TDocument, TKey, TValue>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TValue>> minValueSelector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1693,7 +1694,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> minValueSelector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1709,7 +1710,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1727,7 +1728,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         #endregion
@@ -1742,7 +1743,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="selector">The field you want to sum.</param>
         Task<int> SumByAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, int>> selector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1757,7 +1758,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, int>> selector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1769,7 +1770,7 @@ namespace MongoDbGenericRepository
         /// <param name="selector">The field you want to sum.</param>
         /// <param name="partitionKey">The partition key of your document, if any.</param>
         Task<int> SumByAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, int>> selector, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1786,7 +1787,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, int>> selector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1798,7 +1799,7 @@ namespace MongoDbGenericRepository
         /// <param name="selector">The field you want to sum.</param>
         /// <param name="partitionKey">The partition key of your document, if any.</param>
         int SumBy<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, int>> selector, string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1809,7 +1810,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="selector">The field you want to sum.</param>
         Task<decimal> SumByAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, decimal>> selector)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1824,7 +1825,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, decimal>> selector,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1836,7 +1837,7 @@ namespace MongoDbGenericRepository
         /// <param name="selector">The field you want to sum.</param>
         /// <param name="partitionKey">The partition key of your document, if any.</param>
         Task<decimal> SumByAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, decimal>> selector, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1853,7 +1854,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, decimal>> selector,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -1868,7 +1869,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, decimal>> selector,
             string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         #endregion Sum
@@ -1886,7 +1887,7 @@ namespace MongoDbGenericRepository
         Task<TProjection> ProjectOneAsync<TDocument, TProjection, TKey>(
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -1903,7 +1904,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -1920,7 +1921,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -1939,7 +1940,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -1952,7 +1953,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter"></param>
         /// <param name="projection">The projection expression.</param>
         TProjection ProjectOne<TDocument, TProjection, TKey>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TProjection>> projection)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -1969,7 +1970,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -1986,7 +1987,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2005,7 +2006,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2020,7 +2021,7 @@ namespace MongoDbGenericRepository
         Task<List<TProjection>> ProjectManyAsync<TDocument, TProjection, TKey>(
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2037,7 +2038,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2054,7 +2055,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2073,7 +2074,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2088,7 +2089,7 @@ namespace MongoDbGenericRepository
         List<TProjection> ProjectMany<TDocument, TProjection, TKey>(
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2105,7 +2106,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2122,7 +2123,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2141,7 +2142,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -2162,7 +2163,7 @@ namespace MongoDbGenericRepository
         List<TProjection> GroupBy<TDocument, TGroupKey, TProjection, TKey>(
             Expression<Func<TDocument, TGroupKey>> groupingCriteria,
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2181,7 +2182,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TGroupKey>> groupingCriteria,
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2200,7 +2201,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TGroupKey>> groupingCriteria,
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2221,7 +2222,7 @@ namespace MongoDbGenericRepository
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2240,7 +2241,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TGroupKey>> groupingCriteria,
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2261,7 +2262,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TGroupKey>> groupingCriteria,
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2282,7 +2283,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, TGroupKey>> groupingCriteria,
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2305,7 +2306,7 @@ namespace MongoDbGenericRepository
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -2333,7 +2334,7 @@ namespace MongoDbGenericRepository
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -2354,7 +2355,7 @@ namespace MongoDbGenericRepository
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         #endregion Pagination

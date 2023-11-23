@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MongoDbGenericRepository\MongoDbGenericRepository.csproj" />
+    <ProjectReference Include="..\MongoDbGenericRepository\RCommon.Persistence.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>

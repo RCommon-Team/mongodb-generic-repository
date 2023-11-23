@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDbGenericRepository.Models;
 using MongoDbGenericRepository.Utils;
+using RCommon.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -39,7 +40,7 @@ namespace IntegrationTests.Infrastructure
     {
         public TestDoc()
         {
-            Version = 2;
+            //Version = 2;
             Nested = new Nested
             {
                 SomeDate = DateTime.UtcNow
@@ -57,7 +58,7 @@ namespace IntegrationTests.Infrastructure
 
     }
 
-    public class TestDoc<TKey> : IDocument<TKey>
+    public class TestDoc<TKey> : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
     {
         [BsonId]

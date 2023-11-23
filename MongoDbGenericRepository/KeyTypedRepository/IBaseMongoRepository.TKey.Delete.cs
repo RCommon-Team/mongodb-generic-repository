@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository
 {
@@ -21,7 +22,7 @@ namespace MongoDbGenericRepository
         /// <param name="document">The document you want to delete.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument>(TDocument document)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a document.
@@ -31,7 +32,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a document matching the condition of the LINQ expression filter.
@@ -40,7 +41,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a document matching the condition of the LINQ expression filter.
@@ -50,7 +51,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a document matching the condition of the LINQ expression filter.
@@ -60,7 +61,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a document matching the condition of the LINQ expression filter.
@@ -71,7 +72,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a document matching the condition of the LINQ expression filter.
@@ -80,7 +81,7 @@ namespace MongoDbGenericRepository
         /// <param name="document">The document you want to delete.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument>(TDocument document)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a document matching the condition of the LINQ expression filter.
@@ -90,7 +91,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a document matching the condition of the LINQ expression filter.
@@ -110,7 +111,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a document matching the condition of the LINQ expression filter.
@@ -120,7 +121,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a document matching the condition of the LINQ expression filter.
@@ -131,7 +132,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes the documents matching the condition of the LINQ expression filter.
@@ -140,7 +141,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes the documents matching the condition of the LINQ expression filter.
@@ -150,7 +151,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes the documents matching the condition of the LINQ expression filter.
@@ -160,7 +161,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes the documents matching the condition of the LINQ expression filter.
@@ -171,7 +172,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a list of documents.
@@ -180,7 +181,7 @@ namespace MongoDbGenericRepository
         /// <param name="documents">The list of documents to delete.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Asynchronously deletes a list of documents.
@@ -190,7 +191,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a list of documents.
@@ -199,7 +200,7 @@ namespace MongoDbGenericRepository
         /// <param name="documents">The list of documents to delete.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes a list of documents.
@@ -209,7 +210,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes the documents matching the condition of the LINQ expression filter.
@@ -218,7 +219,7 @@ namespace MongoDbGenericRepository
         /// <param name="filter">A LINQ expression filter.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes the documents matching the condition of the LINQ expression filter.
@@ -228,7 +229,7 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes the documents matching the condition of the LINQ expression filter.
@@ -238,7 +239,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">An optional partition key.</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
 
         /// <summary>
         ///     Deletes the documents matching the condition of the LINQ expression filter.
@@ -249,6 +250,6 @@ namespace MongoDbGenericRepository
         /// <param name="cancellationToken"></param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>;
+            where TDocument : IBusinessEntity<TKey>;
     }
 }

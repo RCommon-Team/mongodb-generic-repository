@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 using System;
 using System.Linq.Expressions;
 
@@ -36,7 +37,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         public virtual IMongoQueryable<TDocument> GetQuery<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetCollection<TDocument, TKey>(partitionKey).AsQueryable().Where(filter);
@@ -50,7 +51,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="document">The document.</param>
         /// <returns></returns>
         public virtual IMongoCollection<TDocument> HandlePartitioned<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             if (document is IPartitionedDocument)
@@ -68,7 +69,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         public virtual IMongoCollection<TDocument> GetCollection<TDocument, TKey>(string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return MongoDbContext.GetCollection<TDocument>(partitionKey);
@@ -82,7 +83,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         public virtual IMongoCollection<TDocument> HandlePartitioned<TDocument, TKey>(string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             if (!string.IsNullOrEmpty(partitionKey))
@@ -142,7 +143,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="minValueSelector">A property selector to order by ascending.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         protected virtual IFindFluent<TDocument, TDocument> GetMinMongoQuery<TDocument, TKey, TValue>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TValue>> minValueSelector, string partitionKey = null)
-                    where TDocument : IDocument<TKey>
+                    where TDocument : IBusinessEntity<TKey>
                     where TKey : IEquatable<TKey>
         {
             return GetCollection<TDocument, TKey>(partitionKey).Find(Builders<TDocument>.Filter.Where(filter))
@@ -160,7 +161,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="maxValueSelector">A property selector to order by descending.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         protected virtual IFindFluent<TDocument, TDocument> GetMaxMongoQuery<TDocument, TKey, TValue>(Expression<Func<TDocument, bool>> filter, Expression<Func<TDocument, TValue>> maxValueSelector, string partitionKey = null)
-                    where TDocument : IDocument<TKey>
+                    where TDocument : IBusinessEntity<TKey>
                     where TKey : IEquatable<TKey>
         {
             return GetCollection<TDocument, TKey>(partitionKey).Find(Builders<TDocument>.Filter.Where(filter))

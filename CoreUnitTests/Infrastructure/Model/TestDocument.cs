@@ -8,7 +8,7 @@ public class TestDocument : Document
 {
     public TestDocument()
     {
-        Version = 2;
+        //Version = 2;
         Nested = new Nested {SomeDate = DateTime.UtcNow};
         Children = new List<Child>();
     }

@@ -28,7 +28,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TField>> field,
             TField value)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             FilterDefinition<TDocument> filter,
             Expression<Func<TDocument, TField>> field,
             TField value)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TDocument documentToModify,
             Expression<Func<TDocument, TField>> field,
             TField value)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
         /// <param name="modifiedDocument">The document with the modifications you want to persist.</param>
         /// <returns>A boolean value indicating success.</returns>
         bool UpdateOne<TDocument, TKey>(IClientSessionHandle session, TDocument modifiedDocument)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
         /// <param name="cancellationToken">The optional cancellation token.</param>
         /// <returns>A boolean value indicating success.</returns>
         bool UpdateOne<TDocument, TKey>(IClientSessionHandle session, TDocument modifiedDocument, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
         /// <param name="update">The update definition.</param>
         /// <returns>A boolean value indicating success.</returns>
         bool UpdateOne<TDocument, TKey>(IClientSessionHandle session, TDocument documentToModify, UpdateDefinition<TDocument> update)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TDocument documentToModify,
             UpdateDefinition<TDocument> update,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, TField>> field,
             TField value)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             FilterDefinition<TDocument> filter,
             Expression<Func<TDocument, TField>> field,
             TField value)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -397,7 +397,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -441,7 +441,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -460,7 +460,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TDocument documentToModify,
             Expression<Func<TDocument, TField>> field,
             TField value)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -481,7 +481,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -493,7 +493,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
         /// <param name="modifiedDocument">The document with the modifications you want to persist.</param>
         /// <returns>A boolean value indicating success.</returns>
         Task<bool> UpdateOneAsync<TDocument, TKey>(IClientSessionHandle session, TDocument modifiedDocument)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -506,7 +506,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
         /// <param name="cancellationToken">The optional cancellation token.</param>
         /// <returns>A boolean value indicating success.</returns>
         Task<bool> UpdateOneAsync<TDocument, TKey>(IClientSessionHandle session, TDocument modifiedDocument, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
         /// <param name="update">The update definition.</param>
         /// <returns>A boolean value indicating success.</returns>
         Task<bool> UpdateOneAsync<TDocument, TKey>(IClientSessionHandle session, TDocument documentToModify, UpdateDefinition<TDocument> update)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TDocument documentToModify,
             UpdateDefinition<TDocument> update,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

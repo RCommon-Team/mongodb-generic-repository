@@ -40,77 +40,77 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteOne(document, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return MongoDbEraser.DeleteOne<TDocument, TKey>(document, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteOne(filter, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteOne(filter, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteOne(filter, partitionKey, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return MongoDbEraser.DeleteOne<TDocument, TKey>(filter, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteOneAsync<TDocument>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteOneAsync(document, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteOneAsync<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbEraser.DeleteOneAsync<TDocument, TKey>(document, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteOneAsync(filter, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteOneAsync(filter, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteOneAsync<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteOneAsync(filter, partitionKey, CancellationToken.None);
         }
@@ -120,42 +120,42 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbEraser.DeleteOneAsync<TDocument, TKey>(filter, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteManyAsync<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteManyAsync(documents, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteManyAsync<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbEraser.DeleteManyAsync<TDocument, TKey>(documents, cancellationToken);
         }
 
         /// <inheritdoc />
         public async Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteManyAsync(filter, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public async Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteManyAsync(filter, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteManyAsync<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await DeleteManyAsync(filter, partitionKey, CancellationToken.None);
         }
@@ -165,49 +165,49 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, bool>> filter,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbEraser.DeleteManyAsync<TDocument, TKey>(filter, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteMany(documents, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return MongoDbEraser.DeleteMany<TDocument, TKey>(documents, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteMany(filter, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteMany(filter, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return DeleteMany(filter, partitionKey, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return MongoDbEraser.DeleteMany<TDocument, TKey>(filter, partitionKey, cancellationToken);
         }

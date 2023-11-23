@@ -30,7 +30,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -49,7 +49,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -68,7 +68,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -87,7 +87,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class;
 
@@ -108,7 +108,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -131,7 +131,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -154,7 +154,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new();
 
@@ -178,7 +178,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task<TDocument> GetByIdAsync<TDocument, TKey>(TKey id, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         TDocument GetById<TDocument, TKey>(TKey id, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         TDocument GetOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -295,7 +295,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
         /// <param name="filter">A LINQ expression filter.</param>
         /// <param name="partitionKey">An optional partition key.</param>
         IFindFluent<TDocument, TDocument> GetCursor<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
         /// <param name="partitionKey">An optional partition key.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         bool Any<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -437,7 +437,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -452,7 +452,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -469,7 +469,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -481,7 +481,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
         /// <param name="partitionKey">An optional partitionKey</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         long Count<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -535,7 +535,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -553,7 +553,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -571,7 +571,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -589,7 +589,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -625,7 +625,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -642,7 +642,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, int>> selector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -659,7 +659,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, decimal>> selector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -674,7 +674,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, int>> selector,
             string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -689,7 +689,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, decimal>> selector,
             string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

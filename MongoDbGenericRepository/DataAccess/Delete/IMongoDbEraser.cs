@@ -22,7 +22,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = default, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteOneAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = default, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = default, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The number of documents deleted.</returns>
         Task<long> DeleteManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
         /// <param name="cancellationToken">The Cancellation Token</param>
         /// <returns>The number of documents deleted.</returns>
         long DeleteMany<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = default, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

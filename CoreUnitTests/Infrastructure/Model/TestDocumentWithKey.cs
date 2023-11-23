@@ -4,7 +4,7 @@ using MongoDbGenericRepository.Models;
 
 namespace CoreUnitTests.Infrastructure.Model;
 
-public class TestDocumentWithKey<TKey> : IDocument<TKey>
+public class TestDocumentWithKey<TKey> : IBusinessEntity<TKey>
     where TKey : IEquatable<TKey>
 {
     public TKey Id { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace MongoDbGenericRepository.Models
+﻿using RCommon.Entities;
+
+namespace MongoDbGenericRepository.Models
 {
     /// <summary>
     /// This class represents a document that can be inserted in a collection that can be partitioned.
@@ -6,7 +8,7 @@
     /// This can be useful if you are planning to build a Software as a Service (SaaS) Platform, or if you want to reduce indexing.
     /// You could for example insert Logs in different collections based on the week and year they where created, or their Log category/source.
     /// </summary>
-    public class PartitionedDocument : Document, IPartitionedDocument
+    public class PartitionedDocument : BusinessEntity, IPartitionedDocument
     {
         /// <summary>
         /// The constructor, it needs a partition key.
@@ -22,5 +24,10 @@
         /// This partition key will be prepended to the collection name to create a new collection.
         /// </summary>
         public string PartitionKey { get; set; }
+
+        public override object[] GetKeys()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

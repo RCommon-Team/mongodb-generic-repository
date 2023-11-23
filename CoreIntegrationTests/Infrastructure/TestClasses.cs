@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDbGenericRepository.Models;
 using MongoDbGenericRepository.Utils;
+using RCommon.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -38,11 +39,11 @@ namespace CoreIntegrationTests.Infrastructure
         public string Value { get; set; }
     }
 
-    public class TestDoc : Document
+    public class TestDoc : BusinessEntity<Guid>
     {
         public TestDoc()
         {
-            Version = 2;
+            //Version = 2;
             Nested = new Nested
             {
                 SomeDate = DateTime.UtcNow
@@ -62,13 +63,17 @@ namespace CoreIntegrationTests.Infrastructure
 
         public List<Child> Children { get; set; }
 
+        public override object[] GetKeys()
+        {
+            throw new NotImplementedException();
+        }
     }
 
-    public class TestDoc<TKey> : IDocument<TKey>
-            where TKey : IEquatable<TKey>
+    public class TestDoc<TKey> : BusinessEntity<TKey>
+        where TKey : IEquatable<TKey>
     {
         [BsonId]
-        public TKey Id { get; set; }
+        public Guid Id { get; set; }
         public int Version { get; set; }
 
         public TestDoc()
@@ -98,7 +103,8 @@ namespace CoreIntegrationTests.Infrastructure
 
         private void InitializeFields()
         {
-            Id = Init<TKey>();
+            Id = Init<Guid>();
         }
+
     }
 }

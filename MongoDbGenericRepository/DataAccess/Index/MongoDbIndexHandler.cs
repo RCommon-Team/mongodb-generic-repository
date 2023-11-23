@@ -23,7 +23,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
 
         /// <inheritdoc />
         public virtual async Task<List<string>> GetIndexesNamesAsync<TDocument, TKey>(string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var indexCursor = await HandlePartitioned<TDocument, TKey>(partitionKey).Indexes.ListAsync(cancellationToken);
@@ -37,7 +37,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var model = new CreateIndexModel<TDocument>(
@@ -57,7 +57,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var collection = HandlePartitioned<TDocument, TKey>(partitionKey);
@@ -75,7 +75,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var collection = HandlePartitioned<TDocument, TKey>(partitionKey);
@@ -93,7 +93,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var collection = HandlePartitioned<TDocument, TKey>(partitionKey);
@@ -111,7 +111,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var collection = HandlePartitioned<TDocument, TKey>(partitionKey);
@@ -130,7 +130,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
 
         /// <inheritdoc />
         public virtual async Task DropIndexAsync<TDocument, TKey>(string indexName, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             await HandlePartitioned<TDocument, TKey>(partitionKey).Indexes.DropOneAsync(indexName, cancellationToken);

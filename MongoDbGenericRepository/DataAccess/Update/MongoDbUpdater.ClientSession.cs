@@ -14,7 +14,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             IClientSessionHandle session,
             TDocument modifiedDocument,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", modifiedDocument.Id);
@@ -26,7 +26,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
 
         /// <inheritdoc cref="IMongoDbUpdater" />
         public virtual bool UpdateOne<TDocument, TKey>(IClientSessionHandle session, TDocument modifiedDocument, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", modifiedDocument.Id);
@@ -41,7 +41,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TDocument documentToModify,
             UpdateDefinition<TDocument> update,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", documentToModify.Id);
@@ -56,7 +56,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TDocument documentToModify,
             UpdateDefinition<TDocument> update,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", documentToModify.Id);
@@ -71,7 +71,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", documentToModify.Id);
@@ -89,7 +89,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             Expression<Func<TDocument, TField>> field,
             TField value,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", documentToModify.Id);
@@ -109,7 +109,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var collection = string.IsNullOrEmpty(partitionKey) ? GetCollection<TDocument, TKey>() : GetCollection<TDocument, TKey>(partitionKey);
@@ -126,7 +126,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return UpdateOneAsync<TDocument, TKey, TField>(session, Builders<TDocument>.Filter.Where(filter), field, value, partitionKey, cancellationToken);
@@ -140,7 +140,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var collection = string.IsNullOrEmpty(partitionKey) ? GetCollection<TDocument, TKey>() : GetCollection<TDocument, TKey>(partitionKey);
@@ -156,7 +156,7 @@ namespace MongoDbGenericRepository.DataAccess.Update
             TField value,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return UpdateOne<TDocument, TKey, TField>(session, Builders<TDocument>.Filter.Where(filter), field, value, partitionKey, cancellationToken);

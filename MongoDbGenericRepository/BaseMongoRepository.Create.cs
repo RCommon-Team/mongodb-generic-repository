@@ -43,7 +43,7 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             await AddOneAsync<TDocument, TKey>(document, CancellationToken.None);
@@ -51,7 +51,7 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument, TKey>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             await MongoDbCreator.AddOneAsync<TDocument, TKey>(document, cancellationToken);
@@ -59,21 +59,21 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument>(TDocument document)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             await AddOneAsync<TDocument, Guid>(document, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             await AddOneAsync<TDocument, Guid>(document, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             AddOne<TDocument, TKey>(document, CancellationToken.None);
@@ -81,7 +81,7 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument, TKey>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             MongoDbCreator.AddOne<TDocument, TKey>(document, cancellationToken);
@@ -89,21 +89,21 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument>(TDocument document)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             AddOne<TDocument, Guid>(document, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             AddOne<TDocument, Guid>(document, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             await AddManyAsync<TDocument, TKey>(documents, CancellationToken.None);
@@ -111,7 +111,7 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             await MongoDbCreator.AddManyAsync<TDocument, TKey>(documents, cancellationToken);
@@ -119,21 +119,21 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             await AddManyAsync<TDocument, Guid>(documents, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             await AddManyAsync<TDocument, Guid>(documents, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument, TKey>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             AddMany<TDocument, TKey>(documents, CancellationToken.None);
@@ -141,7 +141,7 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             MongoDbCreator.AddMany<TDocument, TKey>(documents, cancellationToken);
@@ -149,14 +149,14 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             AddMany<TDocument, Guid>(documents, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             AddMany<TDocument, Guid>(documents, cancellationToken);
         }

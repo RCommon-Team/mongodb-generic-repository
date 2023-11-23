@@ -47,7 +47,7 @@ namespace MongoDbGenericRepository
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument
+            where TDocument : IBusinessEntity
         {
             return await HandlePartitioned<TDocument>(partitionKey).Find(filter).Skip(skipNumber).Limit(takeNumber).ToListAsync(cancellationToken);
         }
@@ -59,7 +59,7 @@ namespace MongoDbGenericRepository
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter).Skip(skipNumber).Limit(takeNumber).ToListAsync(cancellationToken);
@@ -72,7 +72,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key.</typeparam>
         /// <param name="document">The document.</param>
         protected void FormatDocument<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             if (document == null)
@@ -95,7 +95,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TDocument">The document type.</typeparam>
         /// <param name="document">The document.</param>
         protected void FormatDocument<TDocument>(TDocument document)
-            where TDocument : IDocument
+            where TDocument : IBusinessEntity
         {
             if (document == null)
             {
@@ -115,7 +115,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         protected virtual IMongoCollection<TDocument> HandlePartitioned<TDocument>(string partitionKey)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             if (!string.IsNullOrEmpty(partitionKey))
             {
@@ -132,7 +132,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         protected virtual IMongoCollection<TDocument> GetCollection<TDocument>(string partitionKey = null)
-            where TDocument : IDocument<Guid>
+            where TDocument : IBusinessEntity<Guid>
         {
             return MongoDbContext.GetCollection<TDocument>(partitionKey);
         }
@@ -144,7 +144,7 @@ namespace MongoDbGenericRepository
             FilterDefinition<TDocument> filter,
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options)
-            where TDocument : IDocument
+            where TDocument : IBusinessEntity
         {
             return await GetAndUpdateOne(filter, update, options, CancellationToken.None);
         }
@@ -155,7 +155,7 @@ namespace MongoDbGenericRepository
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options,
             CancellationToken cancellationToken)
-            where TDocument : IDocument
+            where TDocument : IBusinessEntity
         {
             return await GetCollection<TDocument>().FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         }
@@ -165,7 +165,7 @@ namespace MongoDbGenericRepository
             FilterDefinition<TDocument> filter,
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetAndUpdateOne<TDocument, TKey>(filter, update, options, CancellationToken.None);
@@ -177,7 +177,7 @@ namespace MongoDbGenericRepository
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetCollection<TDocument, TKey>().FindOneAndUpdateAsync(filter, update, options, cancellationToken);

@@ -17,7 +17,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> groupProjection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new()
         {
@@ -34,7 +34,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new()
         {
@@ -52,7 +52,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<IGrouping<TGroupKey, TDocument>, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class, new()
         {
@@ -72,7 +72,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var sorting = ascending
@@ -95,7 +95,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await HandlePartitioned<TDocument, TKey>(partitionKey)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository
 {
@@ -20,7 +21,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="document">The document you want to add.</param>
         Task AddOneAsync<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace MongoDbGenericRepository
         /// <param name="document">The document you want to add.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task AddOneAsync<TDocument, TKey>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="document">The document you want to add.</param>
         void AddOne<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace MongoDbGenericRepository
         /// <param name="document">The document you want to add.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         void AddOne<TDocument, TKey>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="documents">The documents you want to add.</param>
         Task AddManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace MongoDbGenericRepository
         /// <param name="documents">The documents you want to add.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task AddManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace MongoDbGenericRepository
         /// <typeparam name="TKey">The type of the primary key for a Document.</typeparam>
         /// <param name="documents">The documents you want to add.</param>
         void AddMany<TDocument, TKey>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -101,7 +102,7 @@ namespace MongoDbGenericRepository
         /// <param name="documents">The documents you want to add.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         void AddMany<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

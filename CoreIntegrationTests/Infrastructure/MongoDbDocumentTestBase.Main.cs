@@ -833,7 +833,7 @@ namespace CoreIntegrationTests.Infrastructure
             try
             {
                 // Act
-                var result = await SUT.CreateTextIndexAsync<T>(x => x.AddedAtUtc, option, PartitionKey);
+                var result = await SUT.CreateTextIndexAsync<T>(x => x.Id, option, PartitionKey);
 
                 // Assert
                 var listOfIndexNames = await SUT.GetIndexesNamesAsync<T>(PartitionKey);

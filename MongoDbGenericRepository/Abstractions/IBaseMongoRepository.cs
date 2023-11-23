@@ -33,7 +33,7 @@ namespace MongoDbGenericRepository
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument;
+            where TDocument : IBusinessEntity;
 
         /// <summary>
         ///     Asynchronously returns a paginated list of the documents matching the filter condition.
@@ -51,7 +51,7 @@ namespace MongoDbGenericRepository
             int takeNumber = 50,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace MongoDbGenericRepository
             FilterDefinition<TDocument> filter,
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options)
-            where TDocument : IDocument;
+            where TDocument : IBusinessEntity;
 
         /// <summary>
         ///     GetAndUpdateOne with filter
@@ -82,7 +82,7 @@ namespace MongoDbGenericRepository
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options,
             CancellationToken cancellationToken)
-            where TDocument : IDocument;
+            where TDocument : IBusinessEntity;
 
         /// <summary>
         ///     GetAndUpdateOne with filter
@@ -97,7 +97,7 @@ namespace MongoDbGenericRepository
             FilterDefinition<TDocument> filter,
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace MongoDbGenericRepository
             UpdateDefinition<TDocument> update,
             FindOneAndUpdateOptions<TDocument, TDocument> options,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

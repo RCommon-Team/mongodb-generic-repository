@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository.DataAccess.Base
 {
@@ -20,7 +21,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         IMongoQueryable<TDocument> GetQuery<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="document">The document.</param>
         /// <returns></returns>
         IMongoCollection<TDocument> HandlePartitioned<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         IMongoCollection<TDocument> HandlePartitioned<TDocument, TKey>(string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace MongoDbGenericRepository.DataAccess.Base
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         IMongoCollection<TDocument> GetCollection<TDocument, TKey>(string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

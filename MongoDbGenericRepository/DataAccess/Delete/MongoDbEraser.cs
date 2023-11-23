@@ -25,7 +25,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", document.Id);
@@ -34,7 +34,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
 
         /// <inheritdoc />
         public virtual long DeleteOne<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).DeleteOne(filter, cancellationToken).DeletedCount;
@@ -42,7 +42,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteOneAsync<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", document.Id);
@@ -54,7 +54,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
             Expression<Func<TDocument, bool>> filter,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return (await HandlePartitioned<TDocument, TKey>(partitionKey).DeleteOneAsync(filter, cancellationToken)).DeletedCount;
@@ -65,7 +65,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
             Expression<Func<TDocument, bool>> filter,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return (await HandlePartitioned<TDocument, TKey>(partitionKey).DeleteManyAsync(filter, cancellationToken)).DeletedCount;
@@ -73,7 +73,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
 
         /// <inheritdoc />
         public virtual async Task<long> DeleteManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var documentList = documents.ToList();
@@ -105,7 +105,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var documentList = documents.ToList();
@@ -134,7 +134,7 @@ namespace MongoDbGenericRepository.DataAccess.Delete
 
         /// <inheritdoc />
         public virtual long DeleteMany<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).DeleteMany(filter, cancellationToken).DeletedCount;

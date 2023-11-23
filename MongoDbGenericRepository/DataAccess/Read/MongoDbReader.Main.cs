@@ -28,7 +28,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
 
         /// <inheritdoc />
         public virtual async Task<TDocument> GetByIdAsync<TDocument, TKey>(TKey id, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", id);
@@ -37,7 +37,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
 
         /// <inheritdoc />
         public virtual TDocument GetById<TDocument, TKey>(TKey id, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var filter = Builders<TDocument>.Filter.Eq("Id", id);
@@ -50,7 +50,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(condition, findOption).FirstOrDefaultAsync(cancellationToken);
@@ -62,7 +62,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(condition, findOption).FirstOrDefault(cancellationToken);
@@ -73,7 +73,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter).FirstOrDefaultAsync(cancellationToken);
@@ -84,7 +84,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter).FirstOrDefault(cancellationToken);
@@ -92,7 +92,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
 
         /// <inheritdoc />
         public virtual IFindFluent<TDocument, TDocument> GetCursor<TDocument, TKey>(Expression<Func<TDocument, bool>> filter, string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter);
@@ -104,7 +104,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var count = await HandlePartitioned<TDocument, TKey>(partitionKey).CountDocumentsAsync(condition, countOption, cancellationToken);
@@ -117,7 +117,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var count = HandlePartitioned<TDocument, TKey>(partitionKey).CountDocuments(condition, countOption, cancellationToken);
@@ -129,7 +129,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var count = await HandlePartitioned<TDocument, TKey>(partitionKey).CountDocumentsAsync(filter, cancellationToken: cancellationToken);
@@ -141,7 +141,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var count = HandlePartitioned<TDocument, TKey>(partitionKey).CountDocuments(filter, cancellationToken: cancellationToken);
@@ -154,7 +154,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(condition, findOption).ToListAsync(cancellationToken);
@@ -166,7 +166,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             FindOptions findOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(condition, findOption).ToList(cancellationToken);
@@ -177,7 +177,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter).ToListAsync(cancellationToken);
@@ -188,7 +188,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter).ToList(cancellationToken);
@@ -200,7 +200,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).CountDocumentsAsync(condition, countOption, cancellationToken);
@@ -212,7 +212,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             CountOptions countOption = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).CountDocuments(condition, countOption, cancellationToken);
@@ -223,7 +223,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await HandlePartitioned<TDocument, TKey>(partitionKey).CountDocumentsAsync(filter, cancellationToken: cancellationToken);
@@ -234,7 +234,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return HandlePartitioned<TDocument, TKey>(partitionKey).Find(filter).CountDocuments(cancellationToken);
@@ -250,7 +250,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetCollection<TDocument, TKey>(partitionKey).Find(Builders<TDocument>.Filter.Where(filter))
@@ -265,7 +265,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetCollection<TDocument, TKey>(partitionKey).Find(Builders<TDocument>.Filter.Where(filter))
@@ -280,7 +280,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetCollection<TDocument, TKey>(partitionKey).Find(Builders<TDocument>.Filter.Where(filter))
@@ -295,7 +295,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, object>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetCollection<TDocument, TKey>(partitionKey).Find(Builders<TDocument>.Filter.Where(filter))
@@ -310,7 +310,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetMaxMongoQuery<TDocument, TKey, TValue>(filter, maxValueSelector, partitionKey)
@@ -324,7 +324,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> maxValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetMaxMongoQuery<TDocument, TKey, TValue>(filter, maxValueSelector, partitionKey)
@@ -338,7 +338,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetMinMongoQuery<TDocument, TKey, TValue>(filter, minValueSelector, partitionKey).Project(minValueSelector)
@@ -351,7 +351,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TValue>> minValueSelector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetMinMongoQuery<TDocument, TKey, TValue>(filter, minValueSelector, partitionKey).Project(minValueSelector)
@@ -368,7 +368,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, int>> selector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetQuery<TDocument, TKey>(filter, partitionKey).SumAsync(selector, cancellationToken);
@@ -379,7 +379,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, int>> selector,
             string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetQuery<TDocument, TKey>(filter, partitionKey).Sum(selector);
@@ -391,7 +391,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, decimal>> selector,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return await GetQuery<TDocument, TKey>(filter, partitionKey).SumAsync(selector, cancellationToken);
@@ -402,7 +402,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, bool>> filter,
             Expression<Func<TDocument, decimal>> selector,
             string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             return GetQuery<TDocument, TKey>(filter, partitionKey).Sum(selector);

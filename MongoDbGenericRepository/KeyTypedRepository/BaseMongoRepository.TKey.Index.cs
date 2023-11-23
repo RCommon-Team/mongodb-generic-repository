@@ -44,49 +44,49 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task<List<string>> GetIndexesNamesAsync<TDocument>()
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.GetIndexesNamesAsync<TDocument, TKey>();
         }
 
         /// <inheritdoc />
         public virtual async Task<List<string>> GetIndexesNamesAsync<TDocument>(CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.GetIndexesNamesAsync<TDocument, TKey>(cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<List<string>> GetIndexesNamesAsync<TDocument>(string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.GetIndexesNamesAsync<TDocument, TKey>(partitionKey);
         }
 
         /// <inheritdoc />
         public virtual async Task<List<string>> GetIndexesNamesAsync<TDocument>(string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.GetIndexesNamesAsync<TDocument, TKey>(partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateTextIndexAsync<TDocument>(Expression<Func<TDocument, object>> field)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, null, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateTextIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, null, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateTextIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, IndexCreationOptions indexCreationOptions)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, indexCreationOptions, null, CancellationToken.None);
         }
@@ -96,7 +96,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, indexCreationOptions, null, cancellationToken);
         }
@@ -106,14 +106,14 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, indexCreationOptions, partitionKey, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateTextIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, null, partitionKey, CancellationToken.None);
         }
@@ -123,7 +123,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateTextIndexAsync(field, null, partitionKey, cancellationToken);
         }
@@ -134,14 +134,14 @@ namespace MongoDbGenericRepository
             IndexCreationOptions indexCreationOptions,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.CreateTextIndexAsync<TDocument, TKey>(field, indexCreationOptions, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateAscendingIndexAsync<TDocument>(Expression<Func<TDocument, object>> field)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, null, null, CancellationToken.None);
         }
@@ -150,7 +150,7 @@ namespace MongoDbGenericRepository
         public virtual async Task<string> CreateAscendingIndexAsync<TDocument>(
             Expression<Func<TDocument, object>> field,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, null, null, cancellationToken);
         }
@@ -159,7 +159,7 @@ namespace MongoDbGenericRepository
         public virtual async Task<string> CreateAscendingIndexAsync<TDocument>(
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, indexCreationOptions, null, CancellationToken.None);
         }
@@ -169,14 +169,14 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, indexCreationOptions, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateAscendingIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, null, partitionKey, CancellationToken.None);
         }
@@ -186,7 +186,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, null, partitionKey, cancellationToken);
         }
@@ -196,7 +196,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateAscendingIndexAsync(field, indexCreationOptions, partitionKey, CancellationToken.None);
         }
@@ -207,21 +207,21 @@ namespace MongoDbGenericRepository
             IndexCreationOptions indexCreationOptions,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.CreateAscendingIndexAsync<TDocument, TKey>(field, indexCreationOptions, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateDescendingIndexAsync<TDocument>(Expression<Func<TDocument, object>> field)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, null, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateDescendingIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, null, null, cancellationToken);
         }
@@ -230,7 +230,7 @@ namespace MongoDbGenericRepository
         public virtual async Task<string> CreateDescendingIndexAsync<TDocument>(
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, indexCreationOptions, null, CancellationToken.None);
         }
@@ -240,14 +240,14 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, indexCreationOptions, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateDescendingIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, null, partitionKey, CancellationToken.None);
         }
@@ -257,7 +257,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, null, partitionKey, cancellationToken);
         }
@@ -267,7 +267,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateDescendingIndexAsync(field, indexCreationOptions, partitionKey, CancellationToken.None);
         }
@@ -278,21 +278,21 @@ namespace MongoDbGenericRepository
             IndexCreationOptions indexCreationOptions,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.CreateDescendingIndexAsync<TDocument, TKey>(field, indexCreationOptions, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateHashedIndexAsync<TDocument>(Expression<Func<TDocument, object>> field)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, null, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateHashedIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, null, null, cancellationToken);
         }
@@ -301,7 +301,7 @@ namespace MongoDbGenericRepository
         public virtual async Task<string> CreateHashedIndexAsync<TDocument>(
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, indexCreationOptions, null, CancellationToken.None);
         }
@@ -311,14 +311,14 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, indexCreationOptions, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateHashedIndexAsync<TDocument>(Expression<Func<TDocument, object>> field, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, null, partitionKey, CancellationToken.None);
         }
@@ -328,7 +328,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, null, partitionKey, cancellationToken);
         }
@@ -338,7 +338,7 @@ namespace MongoDbGenericRepository
             Expression<Func<TDocument, object>> field,
             IndexCreationOptions indexCreationOptions,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateHashedIndexAsync(field, indexCreationOptions, partitionKey, CancellationToken.None);
         }
@@ -349,14 +349,14 @@ namespace MongoDbGenericRepository
             IndexCreationOptions indexCreationOptions,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.CreateHashedIndexAsync<TDocument, TKey>(field, indexCreationOptions, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateCombinedTextIndexAsync<TDocument>(IEnumerable<Expression<Func<TDocument, object>>> fields)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, null, null, CancellationToken.None);
         }
@@ -365,7 +365,7 @@ namespace MongoDbGenericRepository
         public virtual async Task<string> CreateCombinedTextIndexAsync<TDocument>(
             IEnumerable<Expression<Func<TDocument, object>>> fields,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, null, null, cancellationToken);
         }
@@ -374,7 +374,7 @@ namespace MongoDbGenericRepository
         public virtual async Task<string> CreateCombinedTextIndexAsync<TDocument>(
             IEnumerable<Expression<Func<TDocument, object>>> fields,
             IndexCreationOptions indexCreationOptions)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, indexCreationOptions, null, CancellationToken.None);
         }
@@ -384,14 +384,14 @@ namespace MongoDbGenericRepository
             IEnumerable<Expression<Func<TDocument, object>>> fields,
             IndexCreationOptions indexCreationOptions,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, indexCreationOptions, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task<string> CreateCombinedTextIndexAsync<TDocument>(IEnumerable<Expression<Func<TDocument, object>>> fields, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, null, partitionKey, CancellationToken.None);
         }
@@ -401,7 +401,7 @@ namespace MongoDbGenericRepository
             IEnumerable<Expression<Func<TDocument, object>>> fields,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, null, partitionKey, cancellationToken);
         }
@@ -411,7 +411,7 @@ namespace MongoDbGenericRepository
             IEnumerable<Expression<Func<TDocument, object>>> fields,
             IndexCreationOptions indexCreationOptions,
             string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await CreateCombinedTextIndexAsync(fields, indexCreationOptions, partitionKey, CancellationToken.None);
         }
@@ -422,35 +422,35 @@ namespace MongoDbGenericRepository
             IndexCreationOptions indexCreationOptions,
             string partitionKey,
             CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return await MongoDbIndexHandler.CreateCombinedTextIndexAsync<TDocument, TKey>(fields, indexCreationOptions, partitionKey, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task DropIndexAsync<TDocument>(string indexName)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await DropIndexAsync<TDocument>(indexName, null, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task DropIndexAsync<TDocument>(string indexName, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await DropIndexAsync<TDocument>(indexName, null, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task DropIndexAsync<TDocument>(string indexName, string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await DropIndexAsync<TDocument>(indexName, partitionKey, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task DropIndexAsync<TDocument>(string indexName, string partitionKey, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await MongoDbIndexHandler.DropIndexAsync<TDocument, TKey>(indexName, partitionKey, cancellationToken);
         }

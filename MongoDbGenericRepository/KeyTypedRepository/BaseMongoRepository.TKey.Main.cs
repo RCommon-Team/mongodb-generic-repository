@@ -48,7 +48,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         protected virtual IMongoCollection<TDocument> HandlePartitioned<TDocument>(string partitionKey)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             if (!string.IsNullOrEmpty(partitionKey))
             {
@@ -65,7 +65,7 @@ namespace MongoDbGenericRepository
         /// <param name="partitionKey">The collection partition key.</param>
         /// <returns></returns>
         protected virtual IMongoCollection<TDocument> GetCollection<TDocument>(string partitionKey = null)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             return MongoDbContext.GetCollection<TDocument>(partitionKey);
         }

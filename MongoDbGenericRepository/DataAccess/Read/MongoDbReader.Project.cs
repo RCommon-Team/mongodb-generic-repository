@@ -16,7 +16,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class
         {
@@ -32,7 +32,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class
         {
@@ -47,7 +47,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class
         {
@@ -62,7 +62,7 @@ namespace MongoDbGenericRepository.DataAccess.Read
             Expression<Func<TDocument, TProjection>> projection,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
             where TProjection : class
         {

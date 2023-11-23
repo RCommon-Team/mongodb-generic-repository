@@ -42,56 +42,56 @@ namespace MongoDbGenericRepository
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await AddOneAsync(document, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await MongoDbCreator.AddOneAsync<TDocument, TKey>(document, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             AddOne(document, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument>(TDocument document, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             MongoDbCreator.AddOne<TDocument, TKey>(document, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await AddManyAsync(documents, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             await MongoDbCreator.AddManyAsync<TDocument, TKey>(documents, cancellationToken);
         }
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument>(IEnumerable<TDocument> documents)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             AddMany(documents, CancellationToken.None);
         }
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument>(IEnumerable<TDocument> documents, CancellationToken cancellationToken)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
         {
             MongoDbCreator.AddMany<TDocument, TKey>(documents, cancellationToken);
         }

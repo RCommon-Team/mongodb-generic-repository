@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MongoDbGenericRepository.DataAccess.Base;
 using MongoDbGenericRepository.Models;
 using MongoDbGenericRepository.Utils;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository.DataAccess.Create
 {
@@ -24,7 +25,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
 
         /// <inheritdoc />
         public virtual async Task AddOneAsync<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             FormatDocument<TDocument, TKey>(document);
@@ -34,7 +35,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
 
         /// <inheritdoc />
         public virtual void AddOne<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             FormatDocument<TDocument, TKey>(document);
@@ -44,7 +45,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
 
         /// <inheritdoc />
         public virtual async Task AddManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var documentsList = documents.ToList();
@@ -75,7 +76,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
 
         /// <inheritdoc />
         public virtual void AddMany<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             var documentList = documents.ToList();
@@ -111,7 +112,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
         /// <typeparam name="TKey">The type of the primary key.</typeparam>
         /// <param name="document">The document.</param>
         protected void FormatDocument<TDocument, TKey>(TDocument document)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>
         {
             if (document == null)

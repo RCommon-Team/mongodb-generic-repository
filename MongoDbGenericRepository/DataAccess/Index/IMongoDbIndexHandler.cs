@@ -22,7 +22,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
         /// <param name="cancellationToken">An optional Cancellation Token.</param>
         /// <returns>A list containing the names of the indexes on on the concerned collection.</returns>
         Task<List<string>> GetIndexesNamesAsync<TDocument, TKey>(string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
             IndexCreationOptions indexCreationOptions = null,
             string partitionKey = null,
             CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace MongoDbGenericRepository.DataAccess.Index
         /// <param name="partitionKey">An optional partition key</param>
         /// <param name="cancellationToken">An optional cancellation token,</param>
         Task DropIndexAsync<TDocument, TKey>(string indexName, string partitionKey = null, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

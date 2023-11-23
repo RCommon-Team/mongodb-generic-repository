@@ -5,16 +5,46 @@ using System.Collections.Generic;
 using Xunit;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using RCommon.Entities;
 
 namespace CoreIntegrationTests
 {
-    public class MongoIdentityUser<TKey> : IdentityUser<TKey>, IDocument<TKey>
+    public class MongoIdentityUser<TKey> : IdentityUser<TKey>, IBusinessEntity<TKey>
         where TKey : IEquatable<TKey>
     {
         public int Version { get; set; }
+
+        public IReadOnlyCollection<ILocalEvent> LocalEvents => throw new NotImplementedException();
+
+        public bool AllowEventTracking { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void AddLocalEvent(ILocalEvent eventItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearLocalEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool EntityEquals(IBusinessEntity other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object[] GetKeys()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveLocalEvent(ILocalEvent eventItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 
-    public class IdentityUserTest : MongoIdentityUser<Guid>, IDocument<Guid>
+    public class IdentityUserTest : MongoIdentityUser<Guid>, IBusinessEntity<Guid>
     {
         public IdentityUserTest()
         {

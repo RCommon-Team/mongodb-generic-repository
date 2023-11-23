@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MongoDbGenericRepository.DataAccess.Base;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 
 namespace MongoDbGenericRepository.DataAccess.Create
 {
@@ -21,7 +22,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
         /// <param name="document">The document you want to add.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task AddOneAsync<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
         /// <param name="document">The document you want to add.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         void AddOne<TDocument, TKey>(TDocument document, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
         /// <param name="documents">The documents you want to add.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         Task AddManyAsync<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace MongoDbGenericRepository.DataAccess.Create
         /// <param name="documents">The documents you want to add.</param>
         /// <param name="cancellationToken">An optional cancellation Token.</param>
         void AddMany<TDocument, TKey>(IEnumerable<TDocument> documents, CancellationToken cancellationToken = default)
-            where TDocument : IDocument<TKey>
+            where TDocument : IBusinessEntity<TKey>
             where TKey : IEquatable<TKey>;
     }
 }

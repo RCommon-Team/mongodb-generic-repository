@@ -1,5 +1,6 @@
 ﻿using MongoDbGenericRepository;
 using MongoDbGenericRepository.Models;
+using RCommon.Entities;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 namespace CoreIntegrationTests.Infrastructure
 {
     public class MongoDbTestFixture<T, TKey> : IDisposable
-        where T : IDocument<TKey>, new()
+        where T : IBusinessEntity<TKey>, new()
         where TKey : IEquatable<TKey>
     {
 
